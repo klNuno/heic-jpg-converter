@@ -28,12 +28,15 @@ def credits():
           """ + Fore.RESET)
     
 def createFolders() -> None :
+    print("Creating Input and Output...")
     try:
-        print("Creating Input and Output...")
         os.mkdir("./input")
+    except:
+        print(Fore.YELLOW + "Warning : Input already exists" + Fore.RESET)
+    try:
         os.mkdir("./output")
     except:
-        print(Fore.YELLOW + "Warning : Input and Output already exists" + Fore.RESET)
+        print(Fore.YELLOW + "Warning : Output already exists" + Fore.RESET)
         
 def checkInput(folder : list) -> None :
     if folder == [] :
@@ -91,8 +94,10 @@ def main():
             print('\r{}'.format(f'[{i}/{len(inputFolder)}] Converting "{e}"'+feur), end="")
             Image.open('./input/' + e).save('./output/' + e[:-5] + '.jpg', quality=100)
             os.remove('./input/' + e)
-        
-    input("\n\n" + Fore.GREEN + 'Finished !' + Fore.RESET)
+    
+    print("\n")
+    print(Fore.GREEN + 'Finished !' + Fore.RESET)
+    input('')
 
 
 main()
