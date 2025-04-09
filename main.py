@@ -71,8 +71,6 @@ def main():
     
     checkInput(inputFolder)
     checkOutput()
-    
-    
         
     a=0
     while not (a == "Y" or a == "y" or a == "N" or a == "n"):
@@ -81,19 +79,12 @@ def main():
     i=0
     feur=" " * 50
     print('')
-    if (a == "Y" or a == "y"):
-        for e in inputFolder:
+    for e in inputFolder:
             i+=1
             print('\r{}'.format(f'[{i}/{len(inputFolder)}] Converting "{e}"'+feur), end="")
             Image.open('./input/' + e).save('./output/' + e[:-5] + '.jpg', quality=100)
-            
-            
-    else:
-        for e in inputFolder:
-            i+=1
-            print('\r{}'.format(f'[{i}/{len(inputFolder)}] Converting "{e}"'+feur), end="")
-            Image.open('./input/' + e).save('./output/' + e[:-5] + '.jpg', quality=100)
-            os.remove('./input/' + e)
+    if (a == "N" or a == "n"):
+        os.remove('./input/' + e)
     
     print("\n")
     print(Fore.GREEN + 'Finished !' + Fore.RESET)
